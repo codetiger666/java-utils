@@ -6,10 +6,10 @@
 
     <groupId>cn.gybyt</groupId>
     <artifactId>util</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1.1</version>
     <name>utils</name>
     <description>java 工具类</description>
-    <url>https://github.com/codetiger666/java_utils</url>
+    <url>https://git.gybyt.cn/codetiger/java-utils</url>
 
     <licenses>
         <license>
@@ -29,21 +29,22 @@
 
     <scm>
         <tag>master</tag>
-        <url>https://github.com/codetiger666/java_utils</url>
-        <connection>https://github.com/codetiger666/java_utils.git</connection>
-        <developerConnection>https://github.com/codetiger666/java_utils.git</developerConnection>
+        <url>https://git.gybyt.cn/codetiger/java-utils</url>
+        <connection>https://git.gybyt.cn/codetiger/java-utils.git</connection>
+        <developerConnection>https://git.gybyt.cn/codetiger/java-utils.git</developerConnection>
     </scm>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <slf4j.version>1.7.36</slf4j.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.36</version>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -63,18 +64,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>3.4.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <aggregate>true</aggregate>
                     <charset>UTF-8</charset>
                     <docencoding>UTF-8</docencoding>
                     <failOnError>false</failOnError>
                 </configuration>
-                <!-- java8版本导致javadoc打包编译失败时候，添加-->
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
+                        <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
