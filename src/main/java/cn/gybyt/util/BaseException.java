@@ -16,6 +16,15 @@ public class BaseException extends RuntimeException{
     public BaseException(){
     }
 
+    /**
+     * @Author codetiger
+     * @Description //TODO
+     * @Date 22:49 2022/5/16
+     * @Param
+     * @param message 错误信息
+     * @param cause
+     * @return
+     **/
     public BaseException(String message, Throwable cause) {
         super(message, cause);
     }
