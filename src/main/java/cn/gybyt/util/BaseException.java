@@ -13,6 +13,9 @@ public class BaseException extends RuntimeException{
     String code;
     String msg;
 
+    /**
+     * 默认构造方法
+     */
     public BaseException(){
     }
 
