@@ -16,6 +16,11 @@ public class BaseException extends RuntimeException{
     public BaseException(){
     }
 
+    /**
+     *
+     * @param message 错误信息
+     * @param cause
+     */
     public BaseException(String message, Throwable cause) {
         super(message, cause);
     }
