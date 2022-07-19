@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Base64;
 
 /**
@@ -37,14 +38,14 @@ public class FileUtil {
             base64 = Base64.getEncoder().encodeToString(bytes);
         } catch (Exception e) {
             log.error("打开文件出错");
-            LoggerUtil.handleException(e);
+            LoggerUtil.handleException(log, e);
         } finally {
             if (in != null) {
                 try {
                     in.close();
                 } catch (IOException e) {
                     log.error("文件关闭出错");
-                    LoggerUtil.handleException(e);
+                    LoggerUtil.handleException(log, e);
                 }
             }
         }
@@ -78,14 +79,14 @@ public class FileUtil {
             bos.write(bytes);
         } catch (Exception e) {
             log.error("文件写入失败");
-            LoggerUtil.handleException(e);
+            LoggerUtil.handleException(log, e);
         } finally {
             if (bos != null) {
                 try {
                     bos.close();
                 } catch (IOException e) {
                     log.error("文件关闭失败");
-                    LoggerUtil.handleException(e);
+                    LoggerUtil.handleException(log, e);
                 }
             }
             if (fos != null) {
@@ -93,9 +94,34 @@ public class FileUtil {
                     fos.close();
                 } catch (IOException e) {
                     log.error("文件关闭失败");
-                    LoggerUtil.handleException(e);
+                    LoggerUtil.handleException(log, e);
                 }
             }
+        }
+    }
+
+    /**
+     * @Author codetiger
+     * @Description //TODO
+     * @Date 9:26 2022/7/19
+     * @Param
+     * @param path 文件路径
+     * @return 文件列表
+     **/
+    public ArrayList<String> listDirFiles(String path) throws Exception {
+        ArrayList<String> files = new ArrayList<String>();
+        File file = new File(path);
+        if (file.isDirectory()){
+            File[] tempList = file.listFiles();
+            for (int i = 0; i < tempList.length; i++) {
+                //如果文件存在
+                if (tempList[i].isFile()) {
+                    files.add(tempList[i].getName());
+                }
+            }
+            return files;
+        }else{
+            throw new Exception("文件夹不存在");
         }
     }
 }

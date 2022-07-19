@@ -12,6 +12,16 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="rdc-snapshots" />
+      <option name="name" value="rdc-snapshots" />
+      <option name="url" value="https://packages.aliyun.com/maven/repository/2228956-snapshot-XEFGqY/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="rdc-releases" />
+      <option name="name" value="rdc-releases" />
+      <option name="url" value="https://packages.aliyun.com/maven/repository/2228956-release-LmYa2s/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="aliyun-public-repo" />
       <option name="name" value="aliyun-public" />
       <option name="url" value="https://maven.aliyun.com/repository/public" />

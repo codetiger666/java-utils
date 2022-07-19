@@ -13,8 +13,7 @@ import org.slf4j.LoggerFactory;
  **/
 
 public class LoggerUtil {
-    public static void handleException(Exception e){
-        Logger log = LoggerFactory.getLogger("LoggerUtil");
+    public static void handleException(Logger log, Exception e){
         log.error(e.getStackTrace()[0].toString() + ": " + e.getMessage());
     }
 

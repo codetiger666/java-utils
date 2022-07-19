@@ -15,7 +15,7 @@ import java.util.Base64;
  **/
 public class BaseUtil {
 
-    public static Logger log = LoggerFactory.getLogger("BaseUtil");
+    public static Logger log = LoggerFactory.getLogger(BaseUtil.class);
 
     /**
      * @Author codetiger
@@ -31,7 +31,7 @@ public class BaseUtil {
             return base64.encodeToString(content.getBytes());
         }catch (Exception e){
             log.error("字符串转base64编码失败");
-            LoggerUtil.handleException(e);
+            LoggerUtil.handleException(log, e);
             return null;
         }
     }
@@ -50,7 +50,7 @@ public class BaseUtil {
             return new String(decoder.decode(base64));
         }catch (Exception e){
             log.error("base64编码解码失败");
-            LoggerUtil.handleException(e);
+            LoggerUtil.handleException(log, e);
             return null;
         }
     }
