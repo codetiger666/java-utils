@@ -50,12 +50,12 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>rdc-snapshots</id>
-            <url>https://packages.aliyun.com/maven/repository/2228956-snapshot-XEFGqY/</url>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>rdc-releases</id>
-            <url>https://packages.aliyun.com/maven/repository/2228956-release-LmYa2s/</url>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
 
@@ -97,27 +97,27 @@
         </plugins>
     </build>
 
-    <!--<profiles>-->
-    <!--    <profile>-->
-    <!--        <id>release</id>-->
-    <!--        <build>-->
-    <!--            <plugins>-->
-    <!--                <plugin>-->
-    <!--                    <groupId>org.apache.maven.plugins</groupId>-->
-    <!--                    <artifactId>maven-gpg-plugin</artifactId>-->
-    <!--                    <version>1.6</version>-->
-    <!--                    <executions>-->
-    <!--                        <execution>-->
-    <!--                            <id>sign-artifacts</id>-->
-    <!--                            <phase>verify</phase>-->
-    <!--                            <goals>-->
-    <!--                                <goal>sign</goal>-->
-    <!--                            </goals>-->
-    <!--                        </execution>-->
-    <!--                    </executions>-->
-    <!--                </plugin>-->
-    <!--            </plugins>-->
-    <!--        </build>-->
-    <!--    </profile>-->
-    <!--</profiles>-->
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
