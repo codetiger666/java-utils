@@ -1,7 +1,6 @@
 package cn.gybyt.util;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * 日志打印工具类
@@ -13,7 +12,7 @@ import org.slf4j.LoggerFactory;
  **/
 
 public class LoggerUtil {
-    public static void handleException(Logger log, Exception e){
+    public static void handleException(Logger log, Exception e) {
         log.error(e.getStackTrace()[0].toString() + ": " + e.getMessage());
     }
 

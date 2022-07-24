@@ -7,18 +7,16 @@ package cn.gybyt.util;
  * @author: Mr.Nie
  * @create: 2021/5/19 9:49
  **/
-public class BaseResponse {
-    String code;
-    String reason;
+public class BaseResponse<T> {
+    // 响应码
+    Integer code;
+    // 提示信息
     String msg;
-    Object data;
+    // 相应数据
+    T data;
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
-    }
-
-    public String getReason() {
-        return reason;
     }
 
     public String getMsg() {
@@ -29,55 +27,39 @@ public class BaseResponse {
         return data;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
 
     public void setMsg(String msg) {
         this.msg = msg;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 
-    public BaseResponse(String code, String reason, String msg, Object data) {
-        this.code = code;
-        this.reason = reason;
-        this.msg = msg;
-        this.data = data;
-    }
-
-    public BaseResponse(String code, String reason, String msg) {
-        this.code = code;
-        this.reason = reason;
-        this.msg = msg;
-    }
-
-    public BaseResponse(String code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
-
-    public BaseResponse(String code, String msg, Object data) {
+    public BaseResponse(Integer code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
+    }
+
+    public BaseResponse(Integer code, String msg) {
+        this.code = code;
+        this.msg = msg;
     }
 
     public BaseResponse() {
     }
 
-    public static BaseResponse success(String code, String msg, Object content){
-        return new BaseResponse(code, msg, content);
+    public BaseResponse success(T content) {
+        return new BaseResponse(HttpStatusEnum.SUCCESS.value(), HttpStatusEnum.SUCCESS.reason(), content);
     }
 
-    public static BaseResponse failure(String code, String reason, String msg){
-        return new BaseResponse(code,reason,msg);
+    public BaseResponse failure(Integer code, String reason, String msg) {
+        return new BaseResponse(code, reason, msg);
     }
 
 

@@ -21,13 +21,13 @@ public class FileUtil {
     private final static Logger log = LoggerFactory.getLogger("FileUtil");
 
     /**
+     * @param path 文件路径
+     * @return base64编码文件字符串
      * @Author codetiger
      * @Date 18:42 2022/5/14
      * @Param
-     * @param path 文件路径
-     * @return base64编码文件字符串
      **/
-    public static String  fileToBase64(String path) {
+    public static String fileToBase64(String path) {
         String base64 = null;
         InputStream in = null;
         try {
@@ -53,18 +53,18 @@ public class FileUtil {
     }
 
     /**
+     * @param base64   base64编码文件字符串
+     * @param path     文件目录
+     * @param fileName 文件名称
+     * @return
      * @Author codetiger
      * @Date 18:43 2022/5/14
      * @Param
-     * @param base64    base64编码文件字符串
-     * @param path  文件目录
-     * @param fileName  文件名称
-     * @return
      **/
     public synchronized static void base64ToFile(String base64, String path, String fileName) {
         File file = null;
         //创建文件目录
-        File  dir=new File(path);
+        File dir = new File(path);
         if (!dir.exists() && !dir.isDirectory()) {
             dir.mkdirs();
         }
@@ -72,7 +72,7 @@ public class FileUtil {
         java.io.FileOutputStream fos = null;
         try {
             byte[] bytes = Base64.getDecoder().decode(base64);
-            file=new File(path+"\\"+fileName);
+            file = new File(path + "\\" + fileName);
             fos = new java.io.FileOutputStream(file);
             bos = new BufferedOutputStream(fos);
             fos.getChannel().tryLock();

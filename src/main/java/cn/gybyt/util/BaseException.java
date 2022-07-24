@@ -3,51 +3,52 @@ package cn.gybyt.util;
 
 /**
  * 公共错误
+ *
  * @program: vue-study-java
  * @classname: BaseException
  * @author: codetiger
  * @create: 2021/5/19 11:39
  **/
 
-public class BaseException extends RuntimeException{
-    String code;
+public class BaseException extends RuntimeException {
+    int code;
     String msg;
 
     /**
      * 默认构造方法
      */
-    public BaseException(){
+    public BaseException() {
     }
 
     /**
-     *
      * @param message 错误信息
      * @param cause
      */
     public BaseException(String message, Throwable cause) {
         super(message, cause);
+        this.msg = message;
     }
 
     /**
+     * @param code    错误码
+     * @param message 错误信息
+     * @return
      * @Author codetiger
      * @Description //TODO
      * @Date 22:39 2022/5/15
      * @Param
-     * @param code 错误码
-     * @param message 错误信息
-     * @return
      **/
-    public BaseException(String code,String message) {
+    public BaseException(Integer code, String message) {
         super(message);
-        this.code=code;
+        this.code = code;
         this.msg = message;
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
