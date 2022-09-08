@@ -21,6 +21,15 @@ public class BaseException extends RuntimeException {
     }
 
     /**
+     * 错误信息，默认500错误
+     * @param message
+     */
+    public BaseException(String  message){
+        super(message);
+        this.code = 500;
+        this.msg = message;
+    }
+    /**
      * @param message 错误信息
      * @param cause
      */

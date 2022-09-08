@@ -6,9 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @program: springboot3
+ * controller返回不处理注解
+ * @program: utils
  * @classname: NotControllerResponseAdvice
- * @author: Codetiger
+ * @author: codetiger
  * @create: 2022/7/20 20:22
  **/
 
