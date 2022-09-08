@@ -4,7 +4,7 @@ package cn.gybyt.util;
  * @program: vue-study-java
  * @classname: HttpStatusEnum
  * @description: http状态码枚举
- * @author: Mr.Nie
+ * @author: codetiger
  * @create: 2021/5/19 14:39
  **/
 public enum HttpStatusEnum {

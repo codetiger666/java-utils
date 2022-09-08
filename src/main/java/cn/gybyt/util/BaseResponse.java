@@ -4,14 +4,14 @@ package cn.gybyt.util;
  * @program: vue-study-java
  * @classname: BaseResponse
  * @description: 公共返回体
- * @author: Mr.Nie
+ * @author: codetiger
  * @create: 2021/5/19 9:49
  **/
 public class BaseResponse<T> {
     // 响应码
     Integer code;
     // 提示信息
-    String msg;
+    String message;
     // 相应数据
     T data;
 
@@ -19,8 +19,8 @@ public class BaseResponse<T> {
         return code;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
     public Object getData() {
@@ -32,23 +32,23 @@ public class BaseResponse<T> {
     }
 
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public void setData(T data) {
         this.data = data;
     }
 
-    public BaseResponse(Integer code, String msg, T data) {
+    public BaseResponse(Integer code, String message, T data) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
         this.data = data;
     }
 
-    public BaseResponse(Integer code, String msg) {
+    public BaseResponse(Integer code, String message) {
         this.code = code;
-        this.msg = msg;
+        this.message = message;
     }
 
     public BaseResponse() {
