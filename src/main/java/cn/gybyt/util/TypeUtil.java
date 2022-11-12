@@ -27,6 +27,10 @@ public abstract class TypeUtil<T> {
         return this.type;
     }
 
+    public String getClassName(){
+        return this.type.toString();
+    }
+
     private static Class<?> findParameterizedTypeReferenceSubclass(Class<?> child) {
         Class<?> parent = child.getSuperclass();
         if (Object.class == parent) {

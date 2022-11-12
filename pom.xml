@@ -6,7 +6,7 @@
 
     <groupId>cn.gybyt</groupId>
     <artifactId>util</artifactId>
-    <version>1.1.11</version>
+    <version>1.1.12</version>
     <name>utils</name>
     <description>java 工具类</description>
     <url>https://git.gybyt.cn/codetiger/java-utils</url>
@@ -39,6 +39,9 @@
         <maven.compiler.target>8</maven.compiler.target>
         <slf4j.version>1.7.36</slf4j.version>
         <springboot.version>2.6.6</springboot.version>
+        <springcloud.version>2.2.9.RELEASE</springcloud.version>
+        <fastjson.version>2.0.18</fastjson.version>
+        <jwt.version>4.2.1</jwt.version>
     </properties>
 
     <dependencies>
@@ -69,6 +72,41 @@
             <version>${springboot.version}</version>
             <optional>true</optional>
         </dependency>
+        <!--openfeign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>${springcloud.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--nacos-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <version>${springcloud.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>${springcloud.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--jwt-->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>${jwt.version}</version>
+            <optional>true</optional>
+        </dependency>
+
     </dependencies>
 
     <distributionManagement>

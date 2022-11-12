@@ -26,7 +26,7 @@ public class CacheUtil {
      */
     public static RedisTemplate getRedisTemplate(){
         if (redisTemplate == null){
-            redisTemplate = SpringUtil.getBean("redisTemplate");
+            redisTemplate = SpringUtil.getBean("gybytRedisTemplate");
         }
         return redisTemplate;
     }
@@ -40,6 +40,17 @@ public class CacheUtil {
      * @param <T>
      */
     public static <T> T get(String key, @Nullable Class<T> type){
+        return (T)getRedisTemplate().opsForValue().get(key);
+    }
+
+    /**
+     * 从缓存中获取数据
+     *
+     * @param key
+     * @return
+     * @param <T>
+     */
+    public static <T> T get(String key){
         return (T)getRedisTemplate().opsForValue().get(key);
     }
 
@@ -184,13 +195,24 @@ public class CacheUtil {
      * @return
      * @param <T>
      */
-    public static <T> T get(String key, String hashKey, String className){
+    public static <T> T getHash(String key, String hashKey, String className){
         try {
             Class<T> aClass = (Class<T>) Class.forName(className);
             return (T)getRedisTemplate().opsForHash().get(key, hashKey);
         } catch (ClassNotFoundException e) {
             throw new BaseException(e.getMessage());
         }
+    }
+
+    /**
+     * 从缓存中获取哈希类型数据，根据类名进行转换
+     *
+     * @param key
+     * @return
+     * @param <T>
+     */
+    public static <T> T getHash(String key, String hashKey){
+        return (T)getRedisTemplate().opsForHash().get(key, hashKey);
     }
 
     /**

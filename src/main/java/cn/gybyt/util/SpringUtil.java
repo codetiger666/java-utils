@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @author: codetiger
  * @create: 2022/11/9 19:47
  **/
-@Component
+@Component(value = "gybytSpringUtil")
 public class SpringUtil implements ApplicationContextAware {
     private final static Logger log = LoggerFactory.getLogger(SpringUtil.class);
     private static ApplicationContext context;
