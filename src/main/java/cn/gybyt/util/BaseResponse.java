@@ -1,7 +1,7 @@
 package cn.gybyt.util;
 
 /**
- * @program: vue-study-java
+ * @program: utils
  * @classname: BaseResponse
  * @description: 公共返回体
  * @author: codetiger
@@ -11,7 +11,7 @@ public class BaseResponse<T> {
     // 响应码
     Integer code;
     // 提示信息
-    String message;
+    String msg;
     // 相应数据
     T data;
 
@@ -19,8 +19,8 @@ public class BaseResponse<T> {
         return code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
     public Object getData() {
@@ -32,8 +32,8 @@ public class BaseResponse<T> {
     }
 
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public void setData(T data) {
@@ -42,24 +42,25 @@ public class BaseResponse<T> {
 
     public BaseResponse(Integer code, String message, T data) {
         this.code = code;
-        this.message = message;
+        this.msg = message;
         this.data = data;
     }
 
     public BaseResponse(Integer code, String message) {
         this.code = code;
-        this.message = message;
+        this.msg = message;
     }
 
     public BaseResponse() {
     }
 
-    public BaseResponse success(T content) {
+    public static <T> BaseResponse success(T content) {
         return new BaseResponse(HttpStatusEnum.SUCCESS.value(), HttpStatusEnum.SUCCESS.reason(), content);
     }
 
-    public BaseResponse failure(Integer code, String reason, String msg) {
-        return new BaseResponse(code, reason, msg);
+
+    public static BaseResponse failure(Integer code, String reason) {
+        return new BaseResponse(code, reason);
     }
 
 

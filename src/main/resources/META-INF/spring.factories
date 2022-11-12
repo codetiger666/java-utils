@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+cn.gybyt.config.AdviceConfig,\
+cn.gybyt.config.RedisConfig

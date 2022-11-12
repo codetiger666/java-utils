@@ -1,7 +1,9 @@
 package cn.gybyt.util;
 
 /**
- * @program: vue-study-java
+ * HTTP状态码
+ *
+ * @program: utils
  * @classname: HttpStatusEnum
  * @description: http状态码枚举
  * @author: codetiger

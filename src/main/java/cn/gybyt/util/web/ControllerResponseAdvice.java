@@ -33,12 +33,12 @@ public class ControllerResponseAdvice implements ResponseBodyAdvice<Object> {
             ObjectMapper objectMapper = new ObjectMapper();
             try {
                 // 将数据包装在ResultVo里后转换为json串进行返回
-                return objectMapper.writeValueAsString(new BaseResponse(200, "请求成功" ,body));
+                return objectMapper.writeValueAsString(BaseResponse.success(body));
             } catch (JsonProcessingException e) {
                 throw new BaseException(e.getMessage());
             }
         }
         // 否则直接包装成ResultVo返回
-        return new BaseResponse(200, "请求成功" ,body);
+        return BaseResponse.success(body);
     }
 }

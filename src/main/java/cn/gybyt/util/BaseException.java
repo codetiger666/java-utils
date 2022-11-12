@@ -2,9 +2,9 @@ package cn.gybyt.util;
 
 
 /**
- * 公共错误
+ * 公共异常
  *
- * @program: vue-study-java
+ * @program: utils
  * @classname: BaseException
  * @author: codetiger
  * @create: 2021/5/19 11:39
