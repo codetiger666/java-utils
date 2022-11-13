@@ -10,12 +10,14 @@ package cn.gybyt.util;
  * @create: 2021/5/19 14:39
  **/
 public enum HttpStatusEnum {
-    SUCCESS(200, "成功"),
-    UNAUTHORIZED(401, "未授权"),
+    SUCCESS(200, "请求成功"),
+    UNAUTHORIZED(401, "用户未登录"),
+    FORBIDDEN(403, "用户无权访问"),
     NOTFOUND(404, "资源未找到"),
-    USERNOTEXIST(1001, "用户不存在!"),
+    SERVERERROR(500, "服务异常"),
+    USERNOTEXIST(1001, "用户不存在"),
     USERNAMEPASSWORDNOTMATCH(1002, "用户名或密码错误"),
-    USERLOGINSUCCESS(1003, "登录成功!");
+    USERLOGINSUCCESS(1003, "登录成功");
 
 
     private final int value;

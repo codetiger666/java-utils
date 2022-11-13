@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * controller返回不处理注解
+ * 不处理响应
  * @program: utils
  * @classname: NotControllerResponseAdvice
  * @author: codetiger
@@ -15,5 +15,5 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface NotControllerResponseAdvice {
+public @interface NotHandleResponse {
 }
