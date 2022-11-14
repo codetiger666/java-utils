@@ -1,4 +1,4 @@
-package cn.gybyt.util;
+package cn.gybyt.web.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

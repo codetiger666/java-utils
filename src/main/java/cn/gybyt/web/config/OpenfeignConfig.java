@@ -1,4 +1,4 @@
-package cn.gybyt.config;
+package cn.gybyt.web.config;
 
 import feign.Feign;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

@@ -6,7 +6,7 @@
 
     <groupId>cn.gybyt</groupId>
     <artifactId>util</artifactId>
-    <version>1.1.12</version>
+    <version>1.2</version>
     <name>utils</name>
     <description>java 工具类</description>
     <url>https://git.gybyt.cn/codetiger/java-utils</url>
@@ -42,6 +42,7 @@
         <springcloud.version>2.2.9.RELEASE</springcloud.version>
         <fastjson.version>2.0.18</fastjson.version>
         <jwt.version>4.2.1</jwt.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
     </properties>
 
     <dependencies>
@@ -64,6 +65,20 @@
             <artifactId>spring-boot-starter-data-redis</artifactId>
             <version>${springboot.version}</version>
             <optional>true</optional>
+        </dependency>
+        <!--生成元数据-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${springboot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--在META-INF中生成忽略配置元数据，加快自动配置的初始化速度，可选-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <optional>true</optional>
+            <version>${springboot.version}</version>
         </dependency>
         <!--aop依赖-->
         <dependency>
@@ -154,6 +169,31 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5</version>
+                <configuration>
+                    <showWarnings>true</showWarnings>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>${mapstruct.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-configuration-processor</artifactId>
+                            <version>${springboot.version}</version>
+                        </path>
+                        <path>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+                            <version>${springboot.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
         </plugins>
     </build>

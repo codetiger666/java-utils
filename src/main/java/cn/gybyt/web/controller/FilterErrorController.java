@@ -1,8 +1,8 @@
-package cn.gybyt.util.web;
+package cn.gybyt.web.controller;
 
 import cn.gybyt.util.BaseException;
 import cn.gybyt.util.BaseResponse;
-import cn.gybyt.util.HttpStatusEnum;
+import cn.gybyt.web.util.HttpStatusEnum;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;

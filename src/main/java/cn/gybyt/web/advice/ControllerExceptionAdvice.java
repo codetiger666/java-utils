@@ -1,8 +1,8 @@
-package cn.gybyt.util.web;
+package cn.gybyt.web.advice;
 
 import cn.gybyt.util.BaseException;
 import cn.gybyt.util.BaseResponse;
-import cn.gybyt.util.HttpStatusEnum;
+import cn.gybyt.web.util.HttpStatusEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

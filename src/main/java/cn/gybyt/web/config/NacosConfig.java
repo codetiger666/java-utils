@@ -1,4 +1,4 @@
-package cn.gybyt.config;
+package cn.gybyt.web.config;
 
 import com.alibaba.cloud.nacos.discovery.NacosDiscoveryClient;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

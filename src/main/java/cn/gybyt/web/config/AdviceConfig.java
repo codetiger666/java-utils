@@ -1,4 +1,4 @@
-package cn.gybyt.config;
+package cn.gybyt.web.config;
 
 import org.springframework.aop.framework.AopContext;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

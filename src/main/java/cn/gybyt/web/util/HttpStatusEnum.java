@@ -1,4 +1,4 @@
-package cn.gybyt.util;
+package cn.gybyt.web.util;
 
 /**
  * HTTP状态码

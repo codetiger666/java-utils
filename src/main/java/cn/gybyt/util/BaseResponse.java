@@ -1,5 +1,7 @@
 package cn.gybyt.util;
 
+import cn.gybyt.web.util.HttpStatusEnum;
+
 /**
  * @program: utils
  * @classname: BaseResponse

@@ -1,4 +1,4 @@
-package cn.gybyt.advice;
+package cn.gybyt.web.advice;
 
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;

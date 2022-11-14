@@ -1,5 +1,6 @@
-package cn.gybyt.util;
+package cn.gybyt.web.util;
 
+import cn.gybyt.util.BaseException;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.lang.Nullable;
 

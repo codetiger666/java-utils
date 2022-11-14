@@ -1,5 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-cn.gybyt.config.AdviceConfig,\
-cn.gybyt.config.RedisConfig,\
-cn.gybyt.config.NacosConfig,\
-cn.gybyt.config.OpenfeignConfig
+cn.gybyt.web.config.AdviceConfig,\
+cn.gybyt.web.config.RedisConfig,\
+cn.gybyt.web.config.NacosConfig,\
+cn.gybyt.web.config.OpenfeignConfig
