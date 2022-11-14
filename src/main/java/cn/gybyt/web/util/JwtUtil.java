@@ -35,7 +35,7 @@ public class JwtUtil {
     public static String createToken(String sub){
         return getJwtProperties().getTokenPrefix() + JWT.create()
                 .withSubject(sub)
-                .withExpiresAt(new Date(System.currentTimeMillis() + getJwtProperties().getExpireTime()))
+                .withExpiresAt(new Date(System.currentTimeMillis() + getJwtProperties().getExpireTime()*1000L*60))
                 .sign(Algorithm.HMAC512(getJwtProperties().getSecret()));
     }
 
@@ -76,7 +76,7 @@ public class JwtUtil {
             throw new BaseException("token验证失败");
         }
         //如果剩余过期时间少于过期时常的一般时 需要更新
-        return (expiresAt.getTime()-System.currentTimeMillis()) < (getJwtProperties().getExpireTime()>>1);
+        return (expiresAt.getTime()-System.currentTimeMillis()) < (getJwtProperties().getExpireTime()*1000L*60>>1);
     }
 
 }

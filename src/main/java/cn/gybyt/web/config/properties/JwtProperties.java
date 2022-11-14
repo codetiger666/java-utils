@@ -34,9 +34,9 @@ public class JwtProperties {
     private String secret = "123456";
 
     /**
-     * 有效期
+     * 有效期(分钟)
      */
-    private long expireTime = 30L;
+    private Integer expireTime = 30;
 
     public String getHeader() {
         return header;
@@ -62,11 +62,11 @@ public class JwtProperties {
         this.secret = secret;
     }
 
-    public long getExpireTime() {
+    public Integer getExpireTime() {
         return expireTime;
     }
 
-    public void setExpireTime(int expireTime) {
-        this.expireTime = expireTime*1000L*60;
+    public void setExpireTime(Integer expireTime) {
+        this.expireTime = expireTime;
     }
 }
