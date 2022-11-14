@@ -1,5 +1,6 @@
 package cn.gybyt.util;
 
+import cn.gybyt.web.util.LoggerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

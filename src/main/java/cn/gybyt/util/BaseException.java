@@ -2,9 +2,9 @@ package cn.gybyt.util;
 
 
 /**
- * 公共错误
+ * 公共异常
  *
- * @program: vue-study-java
+ * @program: utils
  * @classname: BaseException
  * @author: codetiger
  * @create: 2021/5/19 11:39
@@ -21,12 +21,21 @@ public class BaseException extends RuntimeException {
     }
 
     /**
+     * 错误信息，默认500错误
+     * @param message
+     */
+    public BaseException(String  msg){
+        super(msg);
+        this.code = 500;
+        this.msg = msg;
+    }
+    /**
      * @param message 错误信息
      * @param cause
      */
-    public BaseException(String message, Throwable cause) {
-        super(message, cause);
-        this.msg = message;
+    public BaseException(String msg, Throwable cause) {
+        super(msg, cause);
+        this.msg = msg;
     }
 
     /**
@@ -38,10 +47,10 @@ public class BaseException extends RuntimeException {
      * @Date 22:39 2022/5/15
      * @Param
      **/
-    public BaseException(Integer code, String message) {
-        super(message);
+    public BaseException(Integer code, String msg) {
+        super(msg);
         this.code = code;
-        this.msg = message;
+        this.msg = msg;
     }
 
     public Integer getCode() {

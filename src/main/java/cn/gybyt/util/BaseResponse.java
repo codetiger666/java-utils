@@ -1,10 +1,12 @@
 package cn.gybyt.util;
 
+import cn.gybyt.web.util.HttpStatusEnum;
+
 /**
- * @program: vue-study-java
+ * @program: utils
  * @classname: BaseResponse
  * @description: 公共返回体
- * @author: Mr.Nie
+ * @author: codetiger
  * @create: 2021/5/19 9:49
  **/
 public class BaseResponse<T> {
@@ -40,26 +42,27 @@ public class BaseResponse<T> {
         this.data = data;
     }
 
-    public BaseResponse(Integer code, String msg, T data) {
+    public BaseResponse(Integer code, String message, T data) {
         this.code = code;
-        this.msg = msg;
+        this.msg = message;
         this.data = data;
     }
 
-    public BaseResponse(Integer code, String msg) {
+    public BaseResponse(Integer code, String message) {
         this.code = code;
-        this.msg = msg;
+        this.msg = message;
     }
 
     public BaseResponse() {
     }
 
-    public BaseResponse success(T content) {
+    public static <T> BaseResponse success(T content) {
         return new BaseResponse(HttpStatusEnum.SUCCESS.value(), HttpStatusEnum.SUCCESS.reason(), content);
     }
 
-    public BaseResponse failure(Integer code, String reason, String msg) {
-        return new BaseResponse(code, reason, msg);
+
+    public static BaseResponse failure(Integer code, String reason) {
+        return new BaseResponse(code, reason);
     }
 
 

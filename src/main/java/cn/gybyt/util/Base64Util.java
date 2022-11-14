@@ -6,16 +6,16 @@ import org.slf4j.LoggerFactory;
 import java.util.Base64;
 
 /**
- * 基础工具类
+ * Base64工具类
  *
  * @program: utils
  * @classname: BaseUtil
  * @author: Codetiger
  * @create: 2022/5/15 21:48
  **/
-public class BaseUtil {
+public class Base64Util {
 
-    public static Logger log = LoggerFactory.getLogger(BaseUtil.class);
+    public static Logger log = LoggerFactory.getLogger(Base64Util.class);
 
     /**
      * @param content 需要编码的字符串
@@ -26,14 +26,8 @@ public class BaseUtil {
      * @Param
      **/
     public static String strToBase64(String content) {
-        try {
-            Base64.Encoder base64 = Base64.getEncoder();
-            return base64.encodeToString(content.getBytes());
-        } catch (Exception e) {
-            log.error("字符串转base64编码失败");
-            LoggerUtil.handleException(log, e);
-            return null;
-        }
+        Base64.Encoder base64 = Base64.getEncoder();
+        return base64.encodeToString(content.getBytes());
     }
 
     /**
@@ -45,13 +39,7 @@ public class BaseUtil {
      * @Param
      **/
     public static String base64ToStr(String base64) {
-        try {
-            Base64.Decoder decoder = Base64.getDecoder();
-            return new String(decoder.decode(base64));
-        } catch (Exception e) {
-            log.error("base64编码解码失败");
-            LoggerUtil.handleException(log, e);
-            return null;
-        }
+        Base64.Decoder decoder = Base64.getDecoder();
+        return new String(decoder.decode(base64));
     }
 }
