@@ -22,7 +22,7 @@ public class LoggerUtil {
         // 匹配需要的信息
         String pattern = ".*\\.java:\\d*\\)";
         // 匹配跳出循环条件
-        String patternEnd = ".*\\$\\$.*";
+        String patternEnd = ".*java\\.base/jdk\\.internal.*";
         for (StackTraceElement stackTraceElement : stackTrace) {
             // 判断是否符合需要的条件
             boolean matches = Pattern.matches(pattern, stackTraceElement.toString());
