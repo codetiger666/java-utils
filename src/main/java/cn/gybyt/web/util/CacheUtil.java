@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.lang.Nullable;
 
 import java.util.Collection;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
@@ -63,7 +64,7 @@ public class CacheUtil {
      * @return
      * @param <T>
      */
-    public static <T> T hashGet(String key, String hashKey, @Nullable Class<T> type){
+    public static <T> T hashGet(String key, Object hashKey, @Nullable Class<T> type){
         return (T)getRedisTemplate().opsForHash().get(key, hashKey);
     }
 
@@ -117,7 +118,7 @@ public class CacheUtil {
      * @return
      * @param <T>
      */
-    public static <T> T getHash(String key, String hashKey, @Nullable Callable<T> callable, Integer time){
+    public static <T> T getHash(String key, Object hashKey, @Nullable Callable<T> callable, Integer time){
         T t = (T) getRedisTemplate().opsForHash().get(key, hashKey);
         if (t == null){
             try {
@@ -138,7 +139,7 @@ public class CacheUtil {
      * @return
      * @param <T>
      */
-    public static <T> T getHash(String key, String hashKey, @Nullable Callable<T> callable){
+    public static <T> T getHash(String key, Object hashKey, @Nullable Callable<T> callable){
         T t = (T) getRedisTemplate().opsForHash().get(key, hashKey);
         if (t == null){
             try {
@@ -157,8 +158,19 @@ public class CacheUtil {
      * @param object
      * @param time
      */
-    public static void setHash(String key, String hashKey, Object object, Integer time) {
+    public static void setHash(String key, Object hashKey, Object object, Integer time) {
         getRedisTemplate().opsForHash().put(key, hashKey, object);
+        getRedisTemplate().expire(key, time, TimeUnit.MINUTES);
+    }
+
+    /**
+     * 设置哈希方式批量缓存，并指定缓存时间
+     * @param key
+     * @param map
+     * @param time
+     */
+    public static void setHash(String key, Map map, Integer time) {
+        getRedisTemplate().opsForHash().putAll(key, map);
         getRedisTemplate().expire(key, time, TimeUnit.MINUTES);
     }
 
@@ -167,8 +179,17 @@ public class CacheUtil {
      * @param key
      * @param object
      */
-    public static void setHash(String key, String hashKey, Object object) {
+    public static void setHash(String key, Object hashKey, Object object) {
         getRedisTemplate().opsForHash().put(key, hashKey, object);
+    }
+
+    /**
+     * 设置哈希方式批量缓存
+     * @param key
+     * @param map
+     */
+    public static void setHash(String key, Map map) {
+        getRedisTemplate().opsForHash().putAll(key, map);
     }
 
     /**
@@ -196,7 +217,7 @@ public class CacheUtil {
      * @return
      * @param <T>
      */
-    public static <T> T getHash(String key, String hashKey, String className){
+    public static <T> T getHash(String key, Object hashKey, String className){
         try {
             Class<T> aClass = (Class<T>) Class.forName(className);
             return (T)getRedisTemplate().opsForHash().get(key, hashKey);
@@ -212,7 +233,7 @@ public class CacheUtil {
      * @return
      * @param <T>
      */
-    public static <T> T getHash(String key, String hashKey){
+    public static <T> T getHash(String key, Object hashKey){
         return (T)getRedisTemplate().opsForHash().get(key, hashKey);
     }
 
@@ -246,6 +267,23 @@ public class CacheUtil {
     }
 
     /**
+     * 删除哈希缓存
+     * @param key
+     * @param hashKey
+     */
+    public static void remove(String key, Object hashKey){
+        getRedisTemplate().opsForHash().delete(key, hashKey);
+    }
+
+    /**
+     * 根据集合删除哈希缓存
+     * @param keys
+     */
+    public static void remove(String key, Collection<Object> keys){
+        getRedisTemplate().opsForHash().delete(key, keys);
+    }
+
+    /**
      * 根据集合删除缓存
      * @param keys
      */
@@ -253,5 +291,22 @@ public class CacheUtil {
         getRedisTemplate().delete(keys);
     }
 
+    /**
+     * 判断是否有缓存
+     * @param key
+     * @return
+     */
+    public static Boolean hasKay(String key) {
+        return getRedisTemplate().hasKey(key);
+    }
 
+    /**
+     * 判断hash中是否有缓存
+     * @param key
+     * @param hashKey
+     * @return
+     */
+    public static Boolean hasHashKey(String key, Object hashKey) {
+        return getRedisTemplate().opsForHash().hasKey(key, hashKey);
+    }
 }
