@@ -2,7 +2,10 @@ package cn.gybyt.util;
 
 import org.springframework.lang.Nullable;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Objects;
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 
 /**
@@ -23,9 +26,28 @@ public class BaseUtil {
      * @param <T>
      * @param <R>
      */
-    public static <T,R>  R getByField(T t, Function<? super T, ? extends R> function) {
+    //public static <T,R>  R getByField(T t, Function<? super T, ? extends R> function) {
+    //    if (BaseUtil.isNotNull(t)) {
+    //        return function.apply(t);
+    //    }
+    //    return null;
+    //}
+
+    /**
+     * 解决空指针问题,为空指定默认值
+     * @param t
+     * @param function
+     * @return
+     * @param <T>
+     * @param <R>
+     */
+    public static <T,R>  R getByField(T t, Function<? super T, ? extends R> function, R... defaultResult) {
         if (BaseUtil.isNotNull(t)) {
             return function.apply(t);
+        }
+        // 判断是否有为空时默认返回
+        if (defaultResult.length > 0) {
+            return defaultResult[0];
         }
         return null;
     }
