@@ -6,7 +6,7 @@
 
     <groupId>cn.gybyt</groupId>
     <artifactId>util</artifactId>
-    <version>1.3.4</version>
+    <version>1.3.5</version>
     <name>utils</name>
     <description>java 工具类</description>
     <url>https://git.gybyt.cn/codetiger/java-utils</url>
@@ -63,6 +63,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${springboot.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
             <version>${springboot.version}</version>
             <optional>true</optional>
         </dependency>
