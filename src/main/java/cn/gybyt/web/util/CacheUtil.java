@@ -132,6 +132,16 @@ public class CacheUtil {
     }
 
     /**
+     * 从缓存中获取哈希类型数据，如果为空使用回调获取数据，并指定缓存有效时间
+     *
+     * @param key
+     * @return
+     */
+    public static <T, R> Map<T, R> getHashMap(String key) {
+        return (Map<T, R>) getRedisTemplate().opsForHash().entries(key);
+    }
+
+    /**
      * 从缓存中获取哈希类型数据，如果为空使用回调获取数据
      *
      * @param key
