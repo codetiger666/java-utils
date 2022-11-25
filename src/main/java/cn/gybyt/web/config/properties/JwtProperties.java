@@ -38,6 +38,11 @@ public class JwtProperties {
      */
     private Integer expireTime = 30;
 
+    /**
+     * 存入redis中的key前缀
+     */
+    private String keyPrefix = "";
+
     public String getHeader() {
         return header;
     }
@@ -68,5 +73,13 @@ public class JwtProperties {
 
     public void setExpireTime(Integer expireTime) {
         this.expireTime = expireTime;
+    }
+
+    public String getKeyPrefix() {
+        return keyPrefix;
+    }
+
+    public void setKeyPrefix(String keyPrefix) {
+        this.keyPrefix = keyPrefix;
     }
 }
